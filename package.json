@@ -1,0 +1,25 @@
+{
+  "name": "cypress-serverest-e2e",
+  "version": "1.0.0",
+  "description": "Testes automatizados Cypress para ServeRest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndressaVilin/Cypress-ServeRest-E2E.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AndressaVilin/Cypress-ServeRest-E2E/issues"
+  },
+  "homepage": "https://github.com/AndressaVilin/Cypress-ServeRest-E2E#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "cypress": "^15.10.0"
+  }
+}

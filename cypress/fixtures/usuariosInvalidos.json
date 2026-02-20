@@ -1,0 +1,14 @@
+{
+      "usuarioSenhaVazia": {
+        "nome": "Andressa QA",
+        "email": "andressa12@gmail.com",
+        "password": "",
+        "administrador": "true"
+      },
+      "usuarioEmailVazio": {
+        "nome": "Andressa QA",
+        "email": "",
+        "password": "teste",
+        "administrador": "true"
+      }
+}
