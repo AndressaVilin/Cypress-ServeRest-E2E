@@ -10,5 +10,11 @@
         "email": "",
         "password": "teste",
         "administrador": "true"
+      },
+      "usuarioSemEmail": {
+        "nome": "Andressa QA",
+        "email": " ",
+        "password": "teste",
+        "administrador": "true"
       }
 }
