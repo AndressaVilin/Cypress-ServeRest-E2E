@@ -1,75 +1,70 @@
-import {faker} from '@faker-js/faker'
-import usuarios from '../../fixtures/usuariosInvalidos.json'
+import { faker } from "@faker-js/faker";
+import usuarios from "../../fixtures/usuariosInvalidos.json";
 
-describe('[SER-2] Cadastro de Usuários', () => {
+describe("[SR-5] Cadastro de Usuários", () => {
+  let dadosDinamicos;
 
-    let dadosDinamicos;
+  const dadosAdmin = {
+    nome: faker.person.fullName(),
+    email: faker.internet.email(),
+    password: faker.internet.password(),
+    administrador: "true",
+  };
 
-    const dadosAdmin = {
-            nome: faker.person.fullName(),
-            email: faker.internet.email(),
-            password: faker.internet.password(),
-            administrador: "true"
+  before(() => {
+    cy.API_cadastrarUsuario(dadosAdmin);
+  });
+
+  beforeEach(() => {
+      dadosDinamicos = {
+      nome: faker.person.fullName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+  });
+
+  afterEach(() => {
+    if (dadosDinamicos && dadosDinamicos.email) {
+      cy.API_listarUsuarios().then((response) => {
+        const user = response.body.usuarios.find(
+          (u) => u.email === dadosDinamicos.email
+        );
+        if (user) {
+          cy.API_excluirUsuario(user._id)
+        }
+      });
     }
+  });
 
-    before(() => {
-        cy.cadastrarUsuario(dadosAdmin)
-    })
-    
+  it("Deve cadastrar um novo usuário com sucesso", () => {
+    cy.API_login(dadosAdmin);
+    cy.UI_cadastrarUsuario(dadosDinamicos);
 
-    beforeEach(() => {
-        dadosDinamicos = {
-            nome: faker.person.fullName(),
-            email: faker.internet.email(),
-            password: faker.internet.password()
-        }
-    })
+    cy.url().should("include", "/admin/listarusuarios");
 
-    afterEach(() => {
-        if(dadosDinamicos && dadosDinamicos.email){
-            cy.request({
-                method: 'GET',
-                url: `${Cypress.env('urlApi')}/usuarios`
-        }).then( response => {
-            const user = response.body.usuarios.find(u => u.email === dadosDinamicos.email)
-            if(user){
-                cy.excluirUsuario(user._id).then((delResponse) => {
-                    expect(delResponse.status).to.be.eq(200)})
-            }
-        })
-        }
-        
-})
+    cy.get(".jumbotron")
+      .should("be.visible")
+      .and("contain", dadosDinamicos.nome)
+      .and("contain", dadosDinamicos.email);
+  });
 
-    it('Deve cadastrar um novo usuário com sucesso', () => {
-        cy.login(dadosAdmin)
-        cy.UI_cadastrarUsuario(dadosDinamicos)
+  it("Não deve permitir cadastro com e-mail já utilizado", () => {
+    cy.API_login(dadosAdmin);
+    cy.UI_cadastrarUsuario(dadosDinamicos);
+    cy.url().should("include", "/admin/listarusuarios");
 
-       cy.url().should('include', '/admin/listarusuarios')
-        
-    cy.get('.jumbotron')
-     .should('be.visible')
-      .and('contain',dadosDinamicos.nome)
-      .and('contain',dadosDinamicos.email)
-    })
+    cy.UI_cadastrarUsuario(dadosDinamicos);
+    cy.get(".alert", { timeout: 2000 })
+      .should("be.visible")
+      .and("contain", "Este email já está sendo usado");
+  });
 
-    it('Não deve permitir cadastro com e-mail já utilizado', ()=> {
-        cy.login(dadosAdmin)
-        cy.UI_cadastrarUsuario(dadosDinamicos)
-        cy.url().should('include', '/admin/listarusuarios')
+  it("Deve validar que o e-mail não pode estar vazio", () => {
+    cy.API_login(dadosAdmin);
+    cy.UI_cadastrarUsuario(usuarios.usuarioSemEmail);
 
-        cy.UI_cadastrarUsuario(dadosDinamicos)
-        cy.get('.alert', {timeout: 2000})
-        .should('be.visible')
-        .and('contain','Este email já está sendo usado')
-    })
-
-    it('Deve validar que o e-mail não pode estar vazio', () => {
-        cy.login(dadosAdmin)
-        cy.UI_cadastrarUsuario(usuarios.usuarioSemEmail)
-
-        cy.get('.alert', {timeout: 1000})
-        .should('be.visible')
-        .and('contain', 'Email é obrigatório')
-    })   
-})
+    cy.get(".alert", { timeout: 2000 })
+      .should("be.visible")
+      .and("contain", "Email é obrigatório");
+  });
+});

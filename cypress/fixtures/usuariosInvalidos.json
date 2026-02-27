@@ -16,5 +16,12 @@
         "email": " ",
         "password": "teste",
         "administrador": "true"
+      },
+      "usuarioInexistente": {
+        "nome": "Bruno",
+        "email": "bruno12@gmail.com",
+        "password": "qwe123",
+        "administrador": "false"
       }
+
 }

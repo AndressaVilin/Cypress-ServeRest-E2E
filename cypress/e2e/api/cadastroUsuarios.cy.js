@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import usuario from "../../fixtures/usuariosInvalidos.json";
 
-describe("[SER-1] Cadastro de Usuários", () => {
+describe("[SR-1] Cadastro de Usuários", () => {
   let dadosDinamicos;
   let idUsuario;
 
@@ -16,12 +16,12 @@ describe("[SER-1] Cadastro de Usuários", () => {
 
   afterEach(() => {
     if(idUsuario) {
-      cy.excluirUsuario(idUsuario)
+      cy.API_excluirUsuario(idUsuario)
       idUsuario = null
     }
   })
   it("Deve cadastrar um novo usuário com sucesso", () => {
-    cy.cadastrarUsuario(dadosDinamicos).then((response) => {
+    cy.API_cadastrarUsuario(dadosDinamicos).then((response) => {
       const body = response.body;
       idUsuario = response.body._id
       expect(response.status).to.eq(201);
@@ -31,10 +31,10 @@ describe("[SER-1] Cadastro de Usuários", () => {
   });
 
   it("Não deve permitir cadastro com e-mail já utilizado", () => {
-    cy.cadastrarUsuario(dadosDinamicos).then(response => {
+    cy.API_cadastrarUsuario(dadosDinamicos).then(response => {
       idUsuario = response.body._id;
 
-      cy.cadastrarUsuario(dadosDinamicos).then((response) => {
+      cy.API_cadastrarUsuario(dadosDinamicos).then((response) => {
         expect(response.status).to.eq(400);
         expect(response.body.message).to.include("usado");
       });
@@ -42,7 +42,7 @@ describe("[SER-1] Cadastro de Usuários", () => {
   });
 
   it("Deve validar que o e-mail não pode estar em branco", () => {
-    cy.cadastrarUsuario(usuario.usuarioEmailVazio).then((response) => {
+    cy.API_cadastrarUsuario(usuario.usuarioEmailVazio).then((response) => {
       const body = response.body;
       expect(response.status).to.eq(400);
       expect(body.email).to.include("branco");
@@ -50,7 +50,7 @@ describe("[SER-1] Cadastro de Usuários", () => {
   });
 
   it("Deve validar que a senha não pode estar em branco", () => {
-    cy.cadastrarUsuario(usuario.usuarioSenhaVazia).then((response) => {
+    cy.API_cadastrarUsuario(usuario.usuarioSenhaVazia).then((response) => {
       const body = response.body;
       expect(response.status).to.eq(400);
       expect(body.password).to.include("branco");
