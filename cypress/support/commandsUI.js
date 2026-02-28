@@ -13,3 +13,11 @@
             cy.get('[data-testid="senha"]').type(usuario.password)
             cy.get('[data-testid="entrar"]').click()
     })
+
+    Cypress.Commands.add('UI_editarUsuario', usuario => {
+        cy.visit('/admin/listarusuarios')
+        cy.contains('tr', usuario.email).within(() => {
+            cy.get('.btn-info')
+        .click()
+        })   
+    })
