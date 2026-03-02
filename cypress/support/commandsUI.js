@@ -14,10 +14,11 @@
             cy.get('[data-testid="entrar"]').click()
     })
 
-    Cypress.Commands.add('UI_editarUsuario', usuario => {
+    Cypress.Commands.add('UI_excluirUsuario', usuario => {
         cy.visit('/admin/listarusuarios')
+
         cy.contains('tr', usuario.email).within(() => {
-            cy.get('.btn-info')
+            cy.get('.btn-danger')
         .click()
         })   
     })

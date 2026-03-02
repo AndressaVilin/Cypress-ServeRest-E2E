@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import usuarios from "../../fixtures/usuariosInvalidos.json";
+import usuarios from "../../../fixtures/usuariosInvalidos.json";
 
 describe("[SR-5] Cadastro de Usuários", () => {
   let dadosDinamicos;
@@ -16,10 +16,11 @@ describe("[SR-5] Cadastro de Usuários", () => {
   });
 
   beforeEach(() => {
-      dadosDinamicos = {
+    dadosDinamicos = {
       nome: faker.person.fullName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
+      administrador: "false",
     };
   });
 
@@ -30,7 +31,7 @@ describe("[SR-5] Cadastro de Usuários", () => {
           (u) => u.email === dadosDinamicos.email
         );
         if (user) {
-          cy.API_excluirUsuario(user._id)
+          cy.API_excluirUsuario(user._id);
         }
       });
     }

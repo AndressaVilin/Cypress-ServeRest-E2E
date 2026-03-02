@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import usuario from "../../fixtures/usuariosInvalidos.json";
+import usuario from "../../../fixtures/usuariosInvalidos.json";
 
 describe("[SR-6] Login - UI", () => {
   let dadosDinamicos;
