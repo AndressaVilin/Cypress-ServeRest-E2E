@@ -1,8 +1,6 @@
 # 🧪 Automação Híbrida (API & UI) - ServeRest
 
-<p align="center">
-  <img src="https://serverest.dev/assets/img/serverest-logo-transparente.png" alt="Logo ServeRest" width="300">
-</p>
+[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
 
 ![Cypress](https://img.shields.io/badge/-cypress-%23E9E9E9?style=for-the-badge&logo=cypress&logoColor=30E3CA)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)
@@ -59,4 +57,3 @@ O projeto está integrado ao GitHub Actions. A cada commit, os testes são dispa
 ---
 ⌨️ Projeto desenvolvido para estudos de automação avançada com [Cypress](https://www.cypress.io/).
 
-[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
