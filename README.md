@@ -1,5 +1,6 @@
 # 🧪 Automação Híbrida (API & UI) - ServeRest
 
+![Cypress CI](https://github.com/AndressaVilin/Cypress-ServeRest-E2E/actions/workflows/ci.yml/badge.svg)
 [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
 ![Cypress](https://img.shields.io/badge/-cypress-%23E9E9E9?style=for-the-badge&logo=cypress&logoColor=30E3CA)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)
