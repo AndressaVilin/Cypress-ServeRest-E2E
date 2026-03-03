@@ -4,6 +4,7 @@ describe("[SR-21] Excluir Usuário", () => {
   let dadosDinamicos;
   let idUsuario;
   let idAdmin;
+  let token;
 
   const dadosAdmin = {
     nome: faker.person.firstName(),
