@@ -9,7 +9,7 @@
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-Este projeto aplica uma estratégia de **Testes Híbridos** na plataforma [ServeRest](https://front.serverest.dev/). Utilizei requisições de API para manipulação de massa de dados e estados do sistema, combinadas com validações de interface (E2E) para garantir a integridade do Front-end.
+Este projeto aplica uma estratégia de **Testes Híbridos** na plataforma [ServeRest](https://front.serverest.dev/). O projeto utiliza requisições de API para manipulação de massa de dados e estados do sistema, combinadas com validações de interface (E2E) para garantir a integridade do Front-end.
 
 ## 📋 Gestão e Planejamento (Jira)
 Para garantir a rastreabilidade e organização do projeto, utilizei o **Jira** para o gerenciamento das tarefas:
