@@ -1,12 +1,18 @@
 # 🧪 Automação Híbrida (API & UI) - ServeRest
 
 [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
-
 ![Cypress](https://img.shields.io/badge/-cypress-%23E9E9E9?style=for-the-badge&logo=cypress&logoColor=30E3CA)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 Este projeto aplica uma estratégia de **Testes Híbridos** na plataforma [ServeRest](https://front.serverest.dev/). Utilizamos requisições de API para manipulação de massa de dados e estados do sistema, combinadas com validações de interface (E2E) para garantir a integridade do Front-end.
+
+## 📋 Gestão e Planejamento (Jira)
+Para garantir a rastreabilidade e organização do projeto, utilizei o **Jira** para o gerenciamento das tarefas:
+* **User Stories:** Mapeamento dos requisitos do usuário.
+* **Critérios de Aceite:** Definição clara do que precisa ser testado para cada funcionalidade.
+* **Kanban:** Acompanhamento do ciclo de vida das automações (To Do, In Progress, Done).
+* **ID das Tasks:** As especificações (como **[SR-21]** e **[SR-23]**) seguem a nomenclatura das issues criadas no board.
 
 ## 🎯 Estratégia de Testes
 
